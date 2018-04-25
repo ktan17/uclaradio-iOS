@@ -60,6 +60,8 @@ class NowPlayingViewController: UIViewController, SlidingVCDelegate {
         imageView.clipsToBounds = true
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTap))
         imageView.addGestureRecognizer(tapGesture!)
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 8
         
         // pull tab
         pullTabImageView.image = UIImage(named: "pull_tab")
@@ -80,6 +82,8 @@ class NowPlayingViewController: UIViewController, SlidingVCDelegate {
         onAirButton.backgroundColor = UIColor.white
         onAirButton.titleLabel?.font = UIFont(name: Constants.Fonts.titleBold, size: 31)
         onAirButton.titleLabel?.textAlignment = .center
+        onAirButton.clipsToBounds = true
+        onAirButton.layer.cornerRadius = 8
         onAirButton.addTarget(self, action: #selector(didTapOnAirCallButton(_:)), for: .touchUpInside)
        
         let requestButton = UIButton(frame: CGRect(x: 50.0, y: self.containerView.frame.size.height-100.0, width: 150.0 , height: 75.0))
@@ -88,12 +92,13 @@ class NowPlayingViewController: UIViewController, SlidingVCDelegate {
         requestButton.titleLabel?.textAlignment = .center
         requestButton.backgroundColor = UIColor.white
         requestButton.setTitleColor(UIColor.black, for: .normal)
+        requestButton.clipsToBounds = true
+        requestButton.layer.cornerRadius = 8
         requestButton.addTarget(self, action: #selector(didTapRequestCallButton(_:)), for: .touchUpInside)
         
         var callButtonArray: [UIView] = []
         callButtonArray.append(onAirButton)
         callButtonArray.append(requestButton)
-        
         
         let stackView = UIStackView(arrangedSubviews: callButtonArray)
         stackView.translatesAutoresizingMaskIntoConstraints = false
